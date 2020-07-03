@@ -1,6 +1,9 @@
 package com.example.mvvm;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.*;
+
+import java.util.List;
 
 @Dao
 public interface NoteDao {
@@ -12,5 +15,11 @@ public interface NoteDao {
 
     @Delete
     void delete(Note note);
+
+    @Query("DELETE FROM note_table")
+    void deleteAllNode();
+
+    @Query("select * from note_table order by priority desc")
+    LiveData<List<Note>> getAllNotes();
 
 }
