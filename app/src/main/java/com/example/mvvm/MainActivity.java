@@ -62,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
             String description = data.getStringExtra(AddNoteActivity.EXTRA_DESCRIPTION);
             int priority = data.getIntExtra(AddNoteActivity.EXTRA_PRIORITY, 1);
 
-            Note note=new Note(title,description,priority);
+            Note note = new Note(title, description, priority);
             noteViewModel.insert(note);
 
-            Toast.makeText(this,"Note saved",Toast.LENGTH_LONG).show();
-        }else {
-            Toast.makeText(this,"Note not saved",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Note saved", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Note not saved", Toast.LENGTH_LONG).show();
         }
     }
 }
