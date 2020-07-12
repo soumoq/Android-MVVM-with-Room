@@ -29,9 +29,15 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String phoneNo = phoneEditText.getText().toString();
-                Intent intent=new Intent(SignUpActivity.this,OtpActivity.class);
-                intent.putExtra("phone",phoneNo);
-                startActivity(intent);
+                if (phoneNo.length() == 10) {
+                    phoneNo = "+91" + phoneNo;
+                    Intent intent = new Intent(SignUpActivity.this, OtpActivity.class);
+                    intent.putExtra("phone", phoneNo);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(SignUpActivity.this,"Please enter valid phone number",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
