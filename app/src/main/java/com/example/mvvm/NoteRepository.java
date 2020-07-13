@@ -31,19 +31,20 @@ public class NoteRepository {
         new DeleteNodeAsyncTask(noteDao).execute(note);
     }
 
-    public void deleteAllNote(){
+    public void deleteAllNote() {
         new DeleteAllNodeAsyncTask(noteDao).execute();
     }
 
-    public LiveData<List<Note>> getAllNote(){
+    public LiveData<List<Note>> getAllNote() {
         return allNote;
     }
 
-    private static class InsertNodeAsyncTask extends AsyncTask<Note,Void,Void>{
+    private static class InsertNodeAsyncTask extends AsyncTask<Note, Void, Void> {
 
         private NoteDao noteDao;
+
         private InsertNodeAsyncTask(NoteDao noteDao) {
-            this.noteDao =noteDao;
+            this.noteDao = noteDao;
         }
 
         @Override
@@ -53,11 +54,12 @@ public class NoteRepository {
         }
     }
 
-    private static class UpdateNodeAsyncTask extends AsyncTask<Note,Void,Void>{
+    private static class UpdateNodeAsyncTask extends AsyncTask<Note, Void, Void> {
 
         private NoteDao noteDao;
+
         private UpdateNodeAsyncTask(NoteDao noteDao) {
-            this.noteDao =noteDao;
+            this.noteDao = noteDao;
         }
 
         @Override
@@ -68,11 +70,12 @@ public class NoteRepository {
     }
 
 
-    private static class DeleteNodeAsyncTask extends AsyncTask<Note,Void,Void>{
+    private static class DeleteNodeAsyncTask extends AsyncTask<Note, Void, Void> {
 
         private NoteDao noteDao;
+
         private DeleteNodeAsyncTask(NoteDao noteDao) {
-            this.noteDao =noteDao;
+            this.noteDao = noteDao;
         }
 
         @Override
@@ -83,11 +86,12 @@ public class NoteRepository {
     }
 
 
-    private static class DeleteAllNodeAsyncTask extends AsyncTask<Void,Void,Void>{
+    private static class DeleteAllNodeAsyncTask extends AsyncTask<Void, Void, Void> {
 
         private NoteDao noteDao;
+
         private DeleteAllNodeAsyncTask(NoteDao noteDao) {
-            this.noteDao =noteDao;
+            this.noteDao = noteDao;
         }
 
         @Override

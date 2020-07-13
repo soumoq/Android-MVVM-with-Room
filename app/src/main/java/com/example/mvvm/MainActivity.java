@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 noteViewModel.delete(adopter.getNoteAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(MainActivity.this,"Note deleted",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Note deleted", Toast.LENGTH_LONG).show();
             }
         }).attachToRecyclerView(recyclerView);
 
@@ -84,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.delete_all_notes:
                 noteViewModel.deleteAllNotes();
-                Toast.makeText(this,"All notes deleted",Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "All notes deleted", Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

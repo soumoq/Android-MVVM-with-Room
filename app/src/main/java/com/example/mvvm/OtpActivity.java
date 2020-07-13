@@ -39,17 +39,17 @@ public class OtpActivity extends AppCompatActivity {
         Intent intent = getIntent();
         phoneNo = intent.getStringExtra("phone");
 
-        otpVerification=findViewById(R.id.otp_verify);
+        otpVerification = findViewById(R.id.otp_verify);
         sendOtp(phoneNo);
 
         otpVerification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(OtpActivity.this,phoneNo,Toast.LENGTH_LONG).show();
+                sendOtp(phoneNo);
+                Toast.makeText(OtpActivity.this, phoneNo, Toast.LENGTH_LONG).show();
             }
         });
     }
-
 
 
     private void sendOtp(String phoneNumber) {
@@ -91,9 +91,8 @@ public class OtpActivity extends AppCompatActivity {
         }
     };
 
-    private void verifyCode(String code)
-    {
-        PhoneAuthCredential credential=PhoneAuthProvider.getCredential(verificationId,code);
+    private void verifyCode(String code) {
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         signInWithCredential(credential);
     }
 
@@ -101,13 +100,12 @@ public class OtpActivity extends AppCompatActivity {
         mAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Intent intent=new Intent(OtpActivity.this,MainActivity.class);
+                if (task.isSuccessful()) {
+                    Intent intent = new Intent(OtpActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-                }else
-                {
-                    Toast.makeText(OtpActivity.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(OtpActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
